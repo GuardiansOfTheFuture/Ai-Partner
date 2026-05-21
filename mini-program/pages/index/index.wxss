@@ -1,0 +1,109 @@
+/* ━━ 首页样式 ━━ */
+.page { min-height: 100vh; padding-bottom: 40rpx; }
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #FFF0F5 0%, #FFF5F0 30%, #F5F0FF 60%, #F0FAFF 100%);
+  padding: 60rpx 40rpx 50rpx;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-title {
+  font-size: 52rpx;
+  font-weight: 800;
+  letter-spacing: -1rpx;
+}
+.hero-subtitle {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  margin-top: 12rpx;
+}
+
+/* 连接状态 */
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8rpx;
+  margin-top: 24rpx;
+  padding: 8rpx 20rpx;
+  border-radius: 30rpx;
+  font-size: 22rpx;
+}
+.status-chip.online { background: #F0FFF4; color: var(--mint); }
+.status-chip.offline { background: #FFF0F0; color: #FF6B6B; }
+.status-dot {
+  width: 12rpx; height: 12rpx;
+  border-radius: 50%;
+}
+.online .status-dot { background: var(--mint); }
+.offline .status-dot { background: #FF6B6B; }
+
+/* 统计 */
+.stats-row {
+  display: flex;
+  gap: 20rpx;
+  margin: -30rpx 20rpx 0;
+  position: relative;
+  z-index: 1;
+}
+.stat-card {
+  flex: 1;
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 28rpx;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.stat-card.pink  { border-top: 6rpx solid var(--pink); }
+.stat-card.mint  { border-top: 6rpx solid var(--mint); }
+.stat-value { font-size: 40rpx; font-weight: 700; }
+.stat-label { font-size: 22rpx; color: var(--text-secondary); margin-top: 4rpx; }
+
+/* 卡片 */
+.card { margin-top: 24rpx; }
+.card-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-bottom: 20rpx;
+}
+
+/* 快捷操作 */
+.action-grid {
+  display: flex;
+  gap: 20rpx;
+}
+.action-item {
+  flex: 1;
+  text-align: center;
+  font-size: 24rpx;
+  color: var(--text-secondary);
+}
+.action-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10rpx;
+  font-size: 36rpx;
+}
+.pink-bg   { background: linear-gradient(135deg, #FFF0F5, #FFE0E8); }
+.mint-bg   { background: linear-gradient(135deg, #F0FFF4, #E0FFE8); }
+.purple-bg { background: linear-gradient(135deg, #F5F0FF, #E8E0FF); }
+
+/* 提示 */
+.hero-avatar { font-size: 96rpx; margin-bottom: 12rpx; }
+
+.chat-btn {
+  background: linear-gradient(135deg, #FF6B6B, #FF8E53, #A66CFF) !important;
+  color: #fff !important;
+  font-size: 34rpx !important;
+  font-weight: 700 !important;
+  border-radius: 60rpx !important;
+  padding: 24rpx 0 !important;
+  box-shadow: 0 12rpx 36rpx rgba(255,107,107,.4) !important;
+  border: none !important;
+}
+.chat-btn::after { border: none !important; }

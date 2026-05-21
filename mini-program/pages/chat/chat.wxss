@@ -1,0 +1,171 @@
+/* ━━ 聊天页样式 ━━ */
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--bg);
+}
+
+/* 消息列表 */
+.msg-list {
+  flex: 1;
+  padding: 24rpx;
+  overflow-y: auto;
+}
+
+/* 消息行 */
+.msg-row {
+  display: flex;
+  margin-bottom: 28rpx;
+  animation: msgIn .3s ease;
+}
+.msg-left  { justify-content: flex-start; }
+.msg-right { justify-content: flex-end; }
+
+/* 头像 */
+.avatar {
+  width: 64rpx; height: 64rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22rpx;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+.ai-avatar   { background: linear-gradient(135deg, var(--purple), var(--pink)); }
+.user-avatar { background: linear-gradient(135deg, var(--sky), var(--mint)); }
+
+.msg-body { max-width: 72%; }
+.msg-left .msg-body  { margin-left: 14rpx; }
+.msg-right .msg-body { margin-right: 14rpx; }
+
+/* 气泡 */
+.bubble {
+  padding: 20rpx 28rpx;
+  border-radius: 24rpx;
+  font-size: 28rpx;
+  line-height: 1.6;
+  word-break: break-all;
+}
+.bubble-ai {
+  background: linear-gradient(135deg, #F8F0FF, #FFF0F5);
+  border: 1rpx solid #F0E0F0;
+  border-bottom-left-radius: 6rpx;
+}
+.bubble-user {
+  background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+  color: #fff;
+  border-bottom-right-radius: 6rpx;
+}
+
+/* 来源 */
+.sources { margin-top: 10rpx; display: flex; flex-wrap: wrap; gap: 8rpx; }
+.source-tag {
+  padding: 4rpx 14rpx;
+  border-radius: 16rpx;
+  font-size: 20rpx;
+}
+.source-score { margin-left: 6rpx; opacity: .7; }
+
+/* 输入栏 */
+.input-bar {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  padding: 16rpx 24rpx;
+  padding-bottom: calc(16rpx + env(safe-area-inset-bottom));
+  background: #fff;
+  border-top: 1rpx solid #F0E0F0;
+}
+.input-wrap {
+  flex: 1;
+  background: var(--bg);
+  border-radius: 50rpx;
+  padding: 0 28rpx;
+}
+.chat-input {
+  height: 72rpx;
+  font-size: 28rpx;
+  color: var(--text);
+}
+.send-btn {
+  width: 120rpx;
+  height: 72rpx;
+  background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+  color: #fff;
+  font-size: 26rpx;
+  font-weight: 600;
+  border-radius: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0;
+}
+.send-btn[disabled] { opacity: .5; }
+.send-btn::after { border: none; }
+
+/* 空状态 */
+.empty-state {
+  text-align: center;
+  padding-top: 200rpx;
+}
+.empty-icon { font-size: 80rpx; margin-bottom: 20rpx; }
+.empty-title { font-size: 34rpx; font-weight: 600; color: var(--text); }
+.empty-desc { font-size: 26rpx; color: var(--text-secondary); margin-top: 8rpx; }
+
+/* 思考栏 */
+.thinking-bar {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  padding: 16rpx 24rpx;
+  margin: 0 24rpx 20rpx;
+  background: #FFF8FA;
+  border-radius: 20rpx;
+}
+.thinking-dot {
+  width: 12rpx; height: 12rpx;
+  border-radius: 50%;
+  background: var(--pink);
+  animation: pulse 1s ease infinite;
+}
+@keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:1} }
+.thinking-text { font-size: 24rpx; color: var(--pink); flex: 1; }
+
+/* 语音条 */
+.voice-bar {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  margin-top: 8rpx;
+  padding: 10rpx 16rpx;
+  background: #FFF8FA;
+  border-radius: 16rpx;
+  width: fit-content;
+}
+.voice-icon { font-size: 28rpx; }
+.voice-wave { display: flex; align-items: center; gap: 4rpx; }
+.wave-bar {
+  width: 4rpx; height: 16rpx;
+  border-radius: 2rpx;
+  background: #FFB3B3;
+  transition: all .2s;
+}
+.wave-bar.active {
+  background: var(--pink);
+  animation: waveAnim .6s ease infinite;
+}
+.wave-bar.active:nth-child(1) { animation-delay: 0s; }
+.wave-bar.active:nth-child(2) { animation-delay: .1s; }
+.wave-bar.active:nth-child(3) { animation-delay: .2s; }
+.wave-bar.active:nth-child(4) { animation-delay: .3s; }
+.wave-bar.active:nth-child(5) { animation-delay: .4s; }
+@keyframes waveAnim {
+  0%,100% { height: 12rpx; }
+  50% { height: 28rpx; }
+}
+
+@keyframes msgIn { from { opacity: 0; transform: translateY(10rpx); } }

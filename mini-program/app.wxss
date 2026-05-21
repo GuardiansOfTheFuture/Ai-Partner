@@ -1,0 +1,111 @@
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   多巴胺风格 AI 知识库助手
+   配色: 珊瑚粉 → 向日葵黄 → 薄荷绿 → 薰衣草紫
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* ═══════ 全局变量 ═══════ */
+page {
+  --pink:    #FF6B6B;
+  --pink-light: #FF8E8E;
+  --yellow:  #FFD93D;
+  --yellow-light: #FFE66D;
+  --mint:    #6BCB77;
+  --mint-light: #A8E6CF;
+  --purple:  #A66CFF;
+  --purple-light: #C9B6FF;
+  --sky:     #4FC3F7;
+  --sky-light: #B3E5FC;
+  --bg:      #FFF5F7;
+  --card:    #FFFFFF;
+  --text:    #2D3436;
+  --text-secondary: #636E72;
+  --radius:  20rpx;
+  --shadow:  0 4rpx 20rpx rgba(255,107,107,.08);
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+/* ═══════ 通用组件 ═══════ */
+
+/* 渐变按钮 */
+.btn-primary {
+  background: linear-gradient(135deg, #FF6B6B, #FF8E53) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 50rpx !important;
+  font-weight: 600 !important;
+  box-shadow: 0 8rpx 24rpx rgba(255,107,107,.35) !important;
+}
+
+/* 卡片 */
+.card {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 28rpx;
+  margin: 20rpx;
+  box-shadow: 0 4rpx 24rpx rgba(0,0,0,.04);
+}
+
+/* 渐变文字 */
+.gradient-text {
+  background: linear-gradient(135deg, #FF6B6B, #A66CFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+/* 粒子背景容器 */
+.particle-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 动画浮动粒子 */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); opacity: .6; }
+  50%      { transform: translateY(-30rpx) scale(1.2); opacity: 1; }
+}
+
+/* 霓虹 glow 效果 */
+.glow {
+  box-shadow: 0 0 30rpx rgba(255,107,107,.25),
+              0 0 60rpx rgba(166,108,255,.15);
+}
+
+/* 消息气泡 - 多巴胺色 */
+.bubble-user {
+  background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+  color: #fff;
+}
+
+.bubble-ai {
+  background: linear-gradient(135deg, #F8F0FF, #FFF0F5);
+  border: 1rpx solid #F0E0F0;
+}
+
+/* 标签 */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+}
+
+.tag-pink  { background: #FFF0F5; color: #FF6B6B; }
+.tag-mint  { background: #F0FFF4; color: #6BCB77; }
+.tag-purple { background: #F5F0FF; color: #A66CFF; }
+.tag-sky   { background: #F0FAFF; color: #4FC3F7; }

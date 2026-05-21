@@ -1,0 +1,110 @@
+/* ━━ 文档页样式 ━━ */
+.page { min-height: 100vh; padding-bottom: 40rpx; }
+
+/* 上传卡片 */
+.upload-card {
+  margin-top: 30rpx;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #FFF5F8, #FFF8F5, #F8F5FF);
+  border: 2rpx dashed #F0D0E0;
+}
+.upload-title { font-size: 34rpx; font-weight: 700; color: var(--text); }
+.upload-desc { font-size: 24rpx; color: var(--text-secondary); margin-top: 8rpx; }
+
+.upload-btns { margin-top: 24rpx; }
+.upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10rpx;
+  padding: 16rpx 40rpx;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  border: none;
+}
+.pink-btn {
+  background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+  color: #fff;
+  box-shadow: 0 8rpx 24rpx rgba(255,107,107,.3);
+}
+.btn-icon { font-size: 32rpx; }
+
+/* 上传进度 */
+.upload-progress {
+  margin-top: 20rpx;
+}
+.progress-bar {
+  height: 6rpx;
+  background: #F0E0F0;
+  border-radius: 3rpx;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  width: 60%;
+  background: linear-gradient(90deg, #FF6B6B, #FF8E53, #FFD93D);
+  border-radius: 3rpx;
+  animation: progressMove 1.5s ease infinite;
+}
+@keyframes progressMove {
+  0% { width: 20%; }
+  50% { width: 80%; }
+  100% { width: 20%; }
+}
+.progress-text { font-size: 22rpx; color: var(--text-secondary); margin-top: 8rpx; display: block; }
+
+/* 卡片头 */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-count { font-size: 24rpx; color: var(--text-secondary); }
+
+/* 文档项 */
+.doc-item {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #F5F0F5;
+}
+.doc-item:last-child { border-bottom: none; }
+.doc-info { flex: 1; min-width: 0; }
+.doc-name {
+  font-size: 28rpx;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.doc-meta { display: flex; gap: 8rpx; margin-top: 6rpx; }
+
+.doc-status {
+  font-size: 20rpx;
+  padding: 4rpx 14rpx;
+  border-radius: 20rpx;
+}
+.doc-status.ready { background: #F0FFF4; color: var(--mint); }
+
+.doc-delete {
+  width: 48rpx; height: 48rpx;
+  border-radius: 50%;
+  background: #FFF0F0;
+  color: #FF6B6B;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 空 */
+.empty-docs {
+  text-align: center;
+  padding: 60rpx 0;
+  color: var(--text-secondary);
+  font-size: 26rpx;
+}
+.empty-icon { font-size: 60rpx; display: block; margin-bottom: 12rpx; }

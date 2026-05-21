@@ -29,7 +29,7 @@ logger = logging.getLogger(__name__)
 
 def get_llm(
     model: str | None = None,
-    temperature: float = 0.7,
+    temperature: float = 0.5,
     streaming: bool = False,
 ) -> BaseChatModel:
     """

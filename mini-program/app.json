@@ -1,0 +1,34 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/chat/chat"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "小暖",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#FFF5F7"
+  },
+  "tabBar": {
+    "color": "#C0C0C0",
+    "selectedColor": "#FF6B6B",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "小暖",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-active.png"
+      },
+      {
+        "pagePath": "pages/chat/chat",
+        "text": "聊天",
+        "iconPath": "images/chat.png",
+        "selectedIconPath": "images/chat-active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

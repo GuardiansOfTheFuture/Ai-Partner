@@ -1,0 +1,55 @@
+<!-- 小暖 · 聊天页 -->
+<view class="page">
+
+  <scroll-view class="msg-list" scroll-y scroll-into-view="msg-{{messages.length - 1}}" scroll-with-animation>
+    <block wx:for="{{messages}}" wx:key="id">
+      <!-- 小暖消息 -->
+      <view wx:if="{{item.role === 'assistant'}}" class="msg-row msg-left" id="msg-{{index}}">
+        <view class="avatar ai-avatar">暖</view>
+        <view class="msg-body">
+          <view wx:if="{{item.content}}" class="bubble bubble-ai">{{item.content}}</view>
+          <!-- 语音播放按钮 — 只有生成了语音才显示 -->
+          <view wx:if="{{item.voiceUrl}}" class="voice-bar" bindtap="playVoice" data-index="{{index}}">
+            <text class="voice-icon">{{playingIndex === index ? '🔊' : '🔈'}}</text>
+            <view class="voice-wave">
+              <view class="wave-bar {{playingIndex === index ? 'active' : ''}}" wx:for="{{5}}" wx:key="*this"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 用户消息 -->
+      <view wx:else class="msg-row msg-right" id="msg-{{index}}">
+        <view class="msg-body">
+          <view class="bubble bubble-user">{{item.content}}</view>
+        </view>
+        <view class="avatar user-avatar">我</view>
+      </view>
+    </block>
+
+    <!-- 思考中 -->
+    <view wx:if="{{thinking}}" class="thinking-bar">
+      <text class="thinking-dot"></text>
+      <text class="thinking-text">{{thinking}}</text>
+    </view>
+
+    <!-- 空状态 -->
+    <view wx:if="{{messages.length === 0}}" class="empty-state">
+      <view class="empty-icon">🌸</view>
+      <view class="empty-title">嗨，我是小暖</view>
+      <view class="empty-desc">今天过得怎么样？和我说说吧</view>
+    </view>
+  </scroll-view>
+
+  <!-- 输入区 -->
+  <view class="input-bar">
+    <view class="input-wrap">
+      <input class="chat-input" value="{{inputText}}" placeholder="和小暖说点什么..."
+        bindinput="onInput" bindconfirm="send" confirm-type="send" disabled="{{sending}}"/>
+    </view>
+    <button class="send-btn" bindtap="send" disabled="{{sending || !inputText}}">
+      <text wx:if="{{!sending}}">发送</text>
+    </button>
+  </view>
+
+</view>
