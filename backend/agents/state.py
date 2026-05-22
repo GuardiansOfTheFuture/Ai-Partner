@@ -14,6 +14,7 @@ import operator
 class AgentState(TypedDict):
     # ── 输入 ──
     user_message: str                    # 用户原始输入
+    character_id: str                    # 角色ID: sweet/mature/pure/spicy
 
     # ── 对话历史（自动累积） ──
     messages: Annotated[Sequence[BaseMessage], operator.add]
@@ -27,6 +28,10 @@ class AgentState(TypedDict):
 
     # ── 人设层 ──
     persona_guidance: str                # 人设指导: 本次应该用什么语气/风格
+
+    # ── RAG 知识层 ──
+    # knowledge_agent 从 ChromaDB 检索后写入，response_agent 注入提示词
+    retrieved_context: str
 
     # ── 输出 ──
     thinking: str                        # 思考过程

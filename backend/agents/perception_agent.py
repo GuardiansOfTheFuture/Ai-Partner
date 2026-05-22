@@ -48,7 +48,7 @@ async def perception_node(state: AgentState) -> dict:
 
     logger.info("感知 Agent 分析中 | msg=%.50s...", msg)
 
-    llm = get_llm(temperature=0.0)  # 分析任务要精确
+    llm = get_llm(temperature=0.1)
     chain = PERCEPTION_PROMPT | llm | StrOutputParser()
 
     try:

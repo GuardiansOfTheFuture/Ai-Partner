@@ -47,7 +47,7 @@ async def memory_node(state: AgentState) -> dict:
 
     logger.info("记忆 Agent 提取画像中...")
 
-    llm = get_llm(temperature=0.0)
+    llm = get_llm(temperature=0.2)
     chain = MEMORY_PROMPT | llm | StrOutputParser()
 
     profile = await chain.ainvoke({"history": history})

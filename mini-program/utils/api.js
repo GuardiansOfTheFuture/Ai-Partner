@@ -24,8 +24,17 @@ function request(method, path, data) {
 }
 
 export function healthCheck() { return request('GET', '/api/v1/health'); }
+export function getCharacters() { return request('GET', '/api/v1/gf/characters'); }
 export function sendMessage(message, chatHistory = []) {
   return request('POST', '/api/v1/gf/chat', { message, chat_history: chatHistory });
+}
+
+/** 对话历史 */
+export function getConversations(token) {
+  return request('GET', '/api/v1/gf/conversations?token=' + encodeURIComponent(token));
+}
+export function getConvMessages(convId, token) {
+  return request('GET', '/api/v1/gf/conversations/' + convId + '/messages?token=' + encodeURIComponent(token));
 }
 
 /** 拼接完整音频地址 */

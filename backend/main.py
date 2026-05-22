@@ -1,5 +1,5 @@
 """
-小暖 AI 女友 — FastAPI 入口
+AI 女友 — FastAPI 入口
 启动: uv run uvicorn backend.main:app --reload --port 8000
 """
 
@@ -21,18 +21,20 @@ async def lifespan(app: FastAPI):
     # 确保运行时目录存在
     from pathlib import Path
     Path("data/audio").mkdir(parents=True, exist_ok=True)
-    logger.info("小暖 AI 女友 启动中...")
+    logger.info("AI 女友 启动中...")
     logger.info("  LLM: %s", settings.llm_model)
+
     logger.info("  http://%s:%s/redoc", settings.host, settings.port)
     yield
-    logger.info("小暖已休眠")
+    logger.info("AI 女友已休眠")
 
 
 app = FastAPI(
-    title="小暖 AI 女友",
+    title="AI 女友",
     version="1.0.0",
     lifespan=lifespan,
 )
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 app.mount("/audio", StaticFiles(directory="data/audio"), name="audio")
+app.mount("/admin", StaticFiles(directory="admin", html=True), name="admin")
 app.include_router(api_router)

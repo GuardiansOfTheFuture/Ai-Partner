@@ -66,6 +66,14 @@ class Settings(BaseSettings):
         alias="UPLOAD_DIR",
         description="原始文件保存目录",
     )
+    # ──────────── 微信小程序 ────────────
+    wx_appid: str = Field(
+        default="", alias="WX_APPID", description="小程序 AppID"
+    )
+    wx_secret: str = Field(
+        default="", alias="WX_SECRET", description="小程序 AppSecret"
+    )
+
     max_upload_size_mb: int = Field(
         default=20,
         alias="MAX_UPLOAD_SIZE_MB",

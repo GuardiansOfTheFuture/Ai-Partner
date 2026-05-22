@@ -1,14 +1,23 @@
-<!-- 小暖 · 聊天页 -->
+<!-- AI 女友 · 聊天页 -->
 <view class="page">
+
+  <!-- 顶部栏 -->
+  <view class="chat-topbar">
+    <view class="topbar-left" bindtap="loadHistory">
+      <text style="font-size:24rpx;color:var(--muted);">历史</text>
+    </view>
+    <view class="topbar-center">{{aiName}}</view>
+    <view class="topbar-right" bindtap="newConv">
+      <text style="font-size:24rpx;color:var(--muted);">新对话</text>
+    </view>
+  </view>
 
   <scroll-view class="msg-list" scroll-y scroll-into-view="msg-{{messages.length - 1}}" scroll-with-animation>
     <block wx:for="{{messages}}" wx:key="id">
-      <!-- 小暖消息 -->
       <view wx:if="{{item.role === 'assistant'}}" class="msg-row msg-left" id="msg-{{index}}">
-        <view class="avatar ai-avatar">暖</view>
+        <image class="avatar ai-avatar" src="/images/{{aiAvatar}}" mode="aspectFill"/>
         <view class="msg-body">
           <view wx:if="{{item.content}}" class="bubble bubble-ai">{{item.content}}</view>
-          <!-- 语音播放按钮 — 只有生成了语音才显示 -->
           <view wx:if="{{item.voiceUrl}}" class="voice-bar" bindtap="playVoice" data-index="{{index}}">
             <text class="voice-icon">{{playingIndex === index ? '🔊' : '🔈'}}</text>
             <view class="voice-wave">
@@ -17,39 +26,49 @@
           </view>
         </view>
       </view>
-
-      <!-- 用户消息 -->
       <view wx:else class="msg-row msg-right" id="msg-{{index}}">
-        <view class="msg-body">
-          <view class="bubble bubble-user">{{item.content}}</view>
-        </view>
+        <view class="msg-body"><view class="bubble bubble-user">{{item.content}}</view></view>
         <view class="avatar user-avatar">我</view>
       </view>
     </block>
 
-    <!-- 思考中 -->
     <view wx:if="{{thinking}}" class="thinking-bar">
-      <text class="thinking-dot"></text>
       <text class="thinking-text">{{thinking}}</text>
     </view>
 
-    <!-- 空状态 -->
     <view wx:if="{{messages.length === 0}}" class="empty-state">
       <view class="empty-icon">🌸</view>
-      <view class="empty-title">嗨，我是小暖</view>
+      <view class="empty-title">嗨，我是{{aiName}}</view>
       <view class="empty-desc">今天过得怎么样？和我说说吧</view>
     </view>
   </scroll-view>
 
-  <!-- 输入区 -->
   <view class="input-bar">
     <view class="input-wrap">
-      <input class="chat-input" value="{{inputText}}" placeholder="和小暖说点什么..."
+      <input class="chat-input" value="{{inputText}}" placeholder="和{{aiName}}说点什么..."
         bindinput="onInput" bindconfirm="send" confirm-type="send" disabled="{{sending}}"/>
     </view>
     <button class="send-btn" bindtap="send" disabled="{{sending || !inputText}}">
       <text wx:if="{{!sending}}">发送</text>
     </button>
+  </view>
+
+  <!-- 历史面板 -->
+  <view wx:if="{{showHistory}}" class="history-overlay" bindtap="newConv">
+    <view class="history-panel" catchtap="">
+      <view class="history-header">
+        <text>对话历史</text>
+        <text class="history-close" bindtap="newConv">✕</text>
+      </view>
+      <view wx:if="{{conversations.length === 0}}" style="text-align:center;color:var(--muted);padding:40rpx;">暂无历史对话</view>
+      <view wx:for="{{conversations}}" wx:key="id" class="history-item" bindtap="selectConv" data-id="{{item.id}}" data-name="{{item.character_name}}" data-avatar="{{item.character_avatar}}">
+        <image class="history-avatar" src="/images/{{item.character_avatar}}" mode="aspectFill"/>
+        <view class="history-info">
+          <view class="history-name">{{item.character_name}}</view>
+          <view class="history-meta">{{item.message_count}} 条消息 · {{item.created_at}}</view>
+        </view>
+      </view>
+    </view>
   </view>
 
 </view>

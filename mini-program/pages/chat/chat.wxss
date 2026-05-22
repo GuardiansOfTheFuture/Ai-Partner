@@ -35,6 +35,7 @@
   flex-shrink: 0;
 }
 .ai-avatar   { background: linear-gradient(135deg, var(--purple), var(--pink)); }
+.ai-avatar[src] { background: none; }  /* 有图片时不显示背景色 */
 .user-avatar { background: linear-gradient(135deg, var(--sky), var(--mint)); }
 
 .msg-body { max-width: 72%; }
@@ -169,3 +170,33 @@
 }
 
 @keyframes msgIn { from { opacity: 0; transform: translateY(10rpx); } }
+
+/* topbar */
+.chat-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16rpx 24rpx; background: var(--card); border-bottom: 1rpx solid var(--border);
+}
+.topbar-left, .topbar-right { padding: 8rpx 12rpx; }
+.topbar-center { font-weight: 600; font-size: 28rpx; }
+
+/* history panel */
+.history-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,.3); z-index: 200; }
+.history-panel {
+  position: absolute; top: 0; left: 0; bottom: 0; width: 80vw;
+  background: #fff; overflow-y: auto;
+}
+.history-header { display: flex; justify-content: space-between; padding: 24rpx; font-weight: 600; border-bottom: 1rpx solid var(--border); }
+.history-close { color: var(--muted); }
+.history-item { padding: 20rpx 24rpx; border-bottom: 1rpx solid var(--border); }
+.history-item:active { background: var(--bg); }
+.history-title { font-size: 28rpx; }
+.history-meta { font-size: 22rpx; color: var(--muted); margin-top: 4rpx; }
+
+
+.history-item { display:flex; align-items:center; gap:16rpx; padding:20rpx 24rpx; border-bottom:1rpx solid var(--border); }
+.history-item:active { background:var(--bg); }
+.history-avatar { width:64rpx; height:64rpx; border-radius:50%; }
+.history-info { flex:1; }
+.history-name { font-size:28rpx; font-weight:500; }
+.history-meta { font-size:22rpx; color:var(--muted); margin-top:4rpx; }
+
