@@ -6,6 +6,7 @@ function request(method, path, data) {
   return new Promise((resolve, reject) => {
     wx.cloud.callContainer({
       config: { env: ENV },
+      service: 'ai-backend',
       path,
       method,
       header: { 'Content-Type': 'application/json' },

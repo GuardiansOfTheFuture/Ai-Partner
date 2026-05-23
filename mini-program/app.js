@@ -18,6 +18,7 @@ App({
     this.globalData.loginPromise = new Promise((resolve) => {
       wx.cloud.callContainer({
         config: { env: 'python-fastapi-d7gdpr87480d51954' },
+        service: 'ai-backend',
         path: '/api/v1/auth/dev-login',
         method: 'POST',
         data: { device_id: 'dev-' + Date.now() },
