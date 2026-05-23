@@ -74,7 +74,12 @@ async def voice_generate_node(state: AgentState) -> dict:
     logger.debug("TTS 清洗 | before=%d after=%d", len(text), len(clean_text))
 
     try:
-        filename = await text_to_speech(clean_text)
+        cid = state.get("character_id", "sweet")
+        from backend.models import get_character_async
+        char = await get_character_async(cid)
+        voice = char.get("voice", "longxiaochun")
+        tts_model = char.get("tts_model", "cosyvoice-v3-flash")
+        filename = await text_to_speech(clean_text, voice=voice, model=tts_model)
         return {"voice_url": f"/audio/{filename}"}
     except Exception as e:
         logger.error("语音生成失败: %s", e)

@@ -3,7 +3,8 @@ import { healthCheck, getCharacters } from '../../utils/api';
 Page({
   data: {
     backendOnline: false,
-    characters: [],
+    girlfriends: [],  // 女友角色
+    mentors: [],      // 导师角色
     activeId: wx.getStorageSync('character_id') || 'sweet',
   },
 
@@ -20,7 +21,11 @@ Page({
   async loadCharacters() {
     try {
       const data = await getCharacters();
-      this.setData({ characters: data.characters || [] });
+      const chars = data.characters || [];
+      this.setData({
+        girlfriends: chars.filter(c => c.group !== 'mentor'),
+        mentors: chars.filter(c => c.group === 'mentor'),
+      });
     } catch {}
   },
 

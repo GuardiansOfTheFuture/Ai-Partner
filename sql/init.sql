@@ -27,7 +27,10 @@ INSERT INTO characters (id, name, avatar, voice, description) VALUES
 ('sweet',  '小糖', 'tianmei.png', 'Cherry', '软萌可爱、元气甜美的邻家女孩'),
 ('mature', '若琳', 'yujie.png',   'Cherry', '气场强势、成熟冷艳的御姐'),
 ('pure',   '清禾', 'qingchun.png','Cherry', '干净素雅、少年感清甜的文艺女孩'),
-('spicy',  '辣辣', 'lamei.png',   'Cherry', '性感火辣、动感热辣的派对女王');
+('spicy',  '辣辣', 'lamei.png',   'Cherry', '性感火辣、动感热辣的派对女王'),
+('mentor', '亮亮导师', 'mentor.png',
+ 'cosyvoice-v3.5-plus-bailian-53e5437a1b5444d88c35f757cc821159',
+ '专业耐心的成长导师');
 
 -- ═══════════════════════════════════════════════════════════
 -- 2. 人设配置表

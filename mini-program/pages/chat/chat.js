@@ -28,8 +28,8 @@ Page({
       const found = chars.find(c => c.id === cid) || chars[0] || {};
       this.setData({ aiAvatar: found.avatar || 'tianmei.png', aiName: found.name || '小糖' });
     } catch {
-      const map = { sweet: 'tianmei.png', mature: 'yujie.png', pure: 'qingchun.png', spicy: 'lamei.png' };
-      const names = { sweet: '小糖', mature: '若琳', pure: '清禾', spicy: '辣辣' };
+      const map = { sweet:'tianmei.png', mature:'yujie.png', pure:'qingchun.png', spicy:'lamei.png', mentor:'mentor.jpg' };
+      const names = { sweet:'小糖', mature:'若琳', pure:'清禾', spicy:'辣辣', mentor:'亮亮导师' };
       this.setData({ aiAvatar: map[cid] || 'tianmei.png', aiName: names[cid] || '小糖' });
     }
   },
