@@ -31,7 +31,8 @@ services:
       MYSQL_DATABASE: ai_girlfriend
     volumes:
       - ./data/mysql:/var/lib/mysql
-      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/01-init.sql
+      - ./sql/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql
     ports:
       - "3306:3306"
     healthcheck:
