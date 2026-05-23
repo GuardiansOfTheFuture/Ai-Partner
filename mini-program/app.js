@@ -9,7 +9,7 @@ App({
   onLaunch() {
     // 初始化云开发（连接云托管）
     wx.cloud.init({
-      env: '你的云环境ID',  // 云托管控制台 → 环境信息 → 环境ID
+      env: 'python-fastapi-d7gdpr87480d51954',  // 云托管控制台 → 环境信息 → 环境ID
     });
     this.doLogin();
   },
@@ -17,7 +17,7 @@ App({
   doLogin() {
     this.globalData.loginPromise = new Promise((resolve) => {
       wx.cloud.callContainer({
-        config: { env: '你的云环境ID' },
+        config: { env: 'python-fastapi-d7gdpr87480d51954' },
         path: '/api/v1/auth/dev-login',
         method: 'POST',
         data: { device_id: 'dev-' + Date.now() },
