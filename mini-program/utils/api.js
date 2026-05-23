@@ -1,14 +1,13 @@
-const app = getApp();
+// ── callContainer 版本 ──
 
-function getBase() {
-  return app ? app.globalData.apiBase : 'http://localhost:8000';
-}
+const ENV = '你的云环境ID';
 
 function request(method, path, data) {
   return new Promise((resolve, reject) => {
-    wx.request({
+    wx.cloud.callContainer({
+      config: { env: ENV },
+      path,
       method,
-      url: getBase() + path,
       header: { 'Content-Type': 'application/json' },
       data,
       success(res) {
@@ -18,26 +17,20 @@ function request(method, path, data) {
           reject(new Error(res.data?.detail || `HTTP ${res.statusCode}`));
         }
       },
-      fail(err) { reject(new Error(err.errMsg || '网络请求失败')); },
+      fail(err) { reject(new Error(err.errMsg || '请求失败')); },
     });
   });
 }
 
 export function healthCheck() { return request('GET', '/api/v1/health'); }
 export function getCharacters() { return request('GET', '/api/v1/gf/characters'); }
-export function sendMessage(message, chatHistory = []) {
-  return request('POST', '/api/v1/gf/chat', { message, chat_history: chatHistory });
+export function sendMessage(message, chatHistory = [], characterId = 'sweet') {
+  return request('POST', '/api/v1/gf/chat', { message, character_id: characterId, chat_history: chatHistory });
 }
-
-/** 对话历史 */
 export function getConversations(token) {
   return request('GET', '/api/v1/gf/conversations?token=' + encodeURIComponent(token));
 }
 export function getConvMessages(convId, token) {
   return request('GET', '/api/v1/gf/conversations/' + convId + '/messages?token=' + encodeURIComponent(token));
 }
-
-/** 拼接完整音频地址 */
-export function audioUrl(path) {
-  return getBase() + path;
-}
+export function audioUrl(path) { return ''; } // callContainer 不支持音频文件直链

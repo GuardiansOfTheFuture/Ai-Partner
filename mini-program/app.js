@@ -1,22 +1,25 @@
-// ── AI 女友 · 生产环境 ──
+// ── AI 女友 · callContainer 版本 ──
 App({
   globalData: {
-    apiBase: 'https://ai-backend-261153-4-1436055608.sh.run.tcloudbase.com',
-    wsBase: 'wss://ai-backend-261153-4-1436055608.sh.run.tcloudbase.com',
     token: '',
     loginReady: false,
     loginPromise: null,
   },
 
   onLaunch() {
+    // 初始化云开发（连接云托管）
+    wx.cloud.init({
+      env: '你的云环境ID',  // 云托管控制台 → 环境信息 → 环境ID
+    });
     this.doLogin();
   },
 
   doLogin() {
     this.globalData.loginPromise = new Promise((resolve) => {
-      wx.request({
+      wx.cloud.callContainer({
+        config: { env: '你的云环境ID' },
+        path: '/api/v1/auth/dev-login',
         method: 'POST',
-        url: this.globalData.apiBase + '/api/v1/auth/dev-login',
         data: { device_id: 'dev-' + Date.now() },
         success: (res) => {
           if (res.statusCode === 200 && res.data.token) {
